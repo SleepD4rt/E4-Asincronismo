@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>E4 - Asincronismo</title>
+  </head>
+  <body>
+    <main>
+      <form id="pokemon-form"></form>
+      <div class="form__field">
+        <h1 class="form--tittle"></h1>
+        <!-- Campos formulario -->
+        <input
+          type="number"
+          placeholder="Introduzca un número"
+          class="form__input"
+          id="codigo"
+          autocomplete="off"
+        />
+      </div>
+
+      <small id="form__error"></small>
+
+      <input
+        type="submit"
+        class="form__submit__btn"
+        id="buscarBtn"
+        value="Buscar Pokemon"
+      />
+      <!-- CARD POKEMON -->
+      <section id="hero">
+        <div class="container--pokemon">
+          <div class="pokemon--card">
+            <img src="" alt="" class="pokemon--img" />
+            <div class="h1 pokemon--title"></div>
+            <h2 class="pokemon--type"></h2>
+            <p class="weight"></p>
+            <p class="height"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+  <script src="assets/js/index.js"></script>
+</html>
