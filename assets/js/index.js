@@ -1,9 +1,11 @@
 const pokemonsContainer = document.querySelector("#caja");
 const loader = document.querySelector(".pokeballs-container");
+const error = document.querySelector("#form__error");
+const input = document.getElementById("codigo");
+const form = document.getElementById("pokemon-form");
 
-const appState = {
-  currentURL: "https://pokeapi.co/api/v2/pokemon/1/",
-  isFetching: false,
+const renderizarError = (e) => {
+  error.innerHTML = `<p>${e}</p>`;
 };
 
 //Datos del pokemon
@@ -32,8 +34,8 @@ const createPokemonCard = (pokemon) => {
           ${createTypeCards(types)}
       </div>
       <p class="id-poke">#${id}</p>
-      <p class="height">Height: ${height}</p>
-      <p class="weight">Weight: ${weight}</p>
+      <p class="height">Height: ${height} Meters</p>
+      <p class="weight">Weight: ${weight} KG</p>
   </div>
   `;
 };
@@ -51,13 +53,23 @@ const renderPokemon = (pokemon) => {
   pokemonsContainer.innerHTML = createPokemonCard(pokemon);
 };
 
-const search_Pokemon = async () => {
-  const pokemon_json = await fetchPokemons(appState.currentURL);
+const changePokemon = () => {
+  (codigo_pokemon =
+    parseInt(input.value) > 0 && parseInt(input.value) <= 1292
+      ? parseInt(input.value)
+      : renderizarError("No existe un pokemon asociado al número introducido")),
+    (pokemonsContainer.innerHTML = "");
+  return `https://pokeapi.co/api/v2/pokemon/${codigo_pokemon}/`;
+};
+
+const search_Pokemon = async (e) => {
+  e.preventDefault();
+  const pokemon_json = await fetchPokemons(changePokemon());
   renderPokemon(pokemon_json);
 };
 
 const init = () => {
-  search_Pokemon();
+  form.addEventListener("submit", search_Pokemon);
 };
 
 init();

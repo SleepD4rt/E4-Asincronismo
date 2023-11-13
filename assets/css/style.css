@@ -89,7 +89,7 @@ section {
 .weight {
   font-size: 0.7rem;
   font-weight: 800;
-  color: #1e1e1e;
+  color: rgba(255, 255, 255, 0.493);
   letter-spacing: 2px;
 }
 

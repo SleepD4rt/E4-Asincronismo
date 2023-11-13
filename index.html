@@ -13,27 +13,28 @@
         alt=""
         class="pokemon-logo"
       />
-      <form id="pokemon-form"></form>
-      <div class="form__field">
-        <h1 class="form--tittle"></h1>
-        <!-- Campos formulario -->
+      <form id="pokemon-form">
+        <div class="form__field">
+          <h1 class="form--tittle"></h1>
+          <!-- Campos formulario -->
+          <input
+            type="number"
+            placeholder="Introduzca un número"
+            class="form__input"
+            id="codigo"
+            autocomplete="off"
+          />
+        </div>
+
+        <small id="form__error"></small>
+
         <input
-          type="number"
-          placeholder="Introduzca un número"
-          class="form__input"
-          id="codigo"
-          autocomplete="off"
+          type="submit"
+          class="form__submit__btn"
+          id="buscarBtn"
+          value="Buscar Pokemon"
         />
-      </div>
-
-      <small id="form__error"></small>
-
-      <input
-        type="submit"
-        class="form__submit__btn"
-        id="buscarBtn"
-        value="Buscar Pokemon"
-      />
+      </form>
       <!-- CARD POKEMON -->
       <section>
         <div class="poke__container" id="caja">
