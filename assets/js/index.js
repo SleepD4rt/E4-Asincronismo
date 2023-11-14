@@ -4,9 +4,9 @@ const error = document.querySelector("#form__error");
 const input = document.getElementById("codigo");
 const form = document.getElementById("pokemon-form");
 
-const renderizarError = (e) => {
-  error.innerHTML = `<p>${e}</p>`;
-};
+const renderizarError = (msj) => {
+  error.innerHTML = `<p>${msj}</p>`;
+}
 
 //Datos del pokemon
 const pokemonTemplate = (pokemon) => {
@@ -48,14 +48,21 @@ const createTypeCards = (types) => {
     .join("");
 };
 
+
+
 // Funcion para renderear las cards
 const renderPokemon = (pokemon) => {
-  pokemonsContainer.innerHTML = createPokemonCard(pokemon);
-};
+  loader.classList.add("pokeball", "show")
+  setTimeout(()=>{
+    pokemonsContainer.innerHTML = createPokemonCard(pokemon)
+    loader.classList.remove("pokeball", "show")
+  }
+  , 2000);
+} 
 
 const changePokemon = () => {
   (codigo_pokemon =
-    parseInt(input.value) > 0 && parseInt(input.value) <= 1292
+    parseInt(input.value) > 0 && parseInt(input.value) <= 10275
       ? parseInt(input.value)
       : renderizarError("No existe un pokemon asociado al número introducido")),
     (pokemonsContainer.innerHTML = "");
@@ -63,9 +70,17 @@ const changePokemon = () => {
 };
 
 const search_Pokemon = async (e) => {
+  error.innerHTML="";
   e.preventDefault();
-  const pokemon_json = await fetchPokemons(changePokemon());
-  renderPokemon(pokemon_json);
+  try {
+    const pokemon_json = await fetchPokemons(changePokemon());
+    renderPokemon(pokemon_json);
+  } catch (error) {
+    pokemonsContainer.innerHTML = "";
+    renderizarError("No existe un pokemon asociado al número introducido");
+  }
+  
+
 };
 
 const init = () => {

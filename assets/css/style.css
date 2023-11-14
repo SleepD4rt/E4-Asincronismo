@@ -9,6 +9,14 @@
 body {
   background: #252525;
   font-family: "Poppins", sans-serif;
+ 
+}
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 section {
@@ -31,6 +39,18 @@ section {
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+#pokemon-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+#form__error{
+  color: white;
 }
 
 .poke {
@@ -57,9 +77,8 @@ section {
 }
 
 .id-poke {
-  position: absolute;
-  top: 4rem;
-  font-size: 5.5rem;
+  top: 2rem;
+  font-size: 3rem;
   color: #363636;
   font-weight: 800;
   z-index: 1;
